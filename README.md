@@ -16,7 +16,7 @@ Service url : grapho/connector/meta
 Request Type: POST
 Request Data :
 
-{
+"{
 
 "connectorName":"MYSQL connector",
 
@@ -41,7 +41,7 @@ passwd=${{password}},db=${{dbName}}",
 	 
 	}"
 	
-}
+}"
 
 
 
