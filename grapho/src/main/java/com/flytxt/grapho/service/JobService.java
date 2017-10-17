@@ -14,7 +14,11 @@ import com.flytxt.grapho.entity.ResultEntity;
 import com.flytxt.grapho.exception.GraphoException;
 import com.flytxt.grapho.filter.FilterCriteria;
 import com.querydsl.core.types.Predicate;
-
+/**
+ * 
+ * @author shiju.john
+ *
+ */
 @Service
 public class JobService extends AbstractService<JobDetails, FilterCriteria> {
 	

@@ -6,7 +6,7 @@ import javax.persistence.Transient;
 import javax.xml.bind.annotation.XmlTransient;
 /**
  * 
- * @author shijuj
+ * @author shiju.john
  *
  */
 public interface FlyEntity extends Serializable{

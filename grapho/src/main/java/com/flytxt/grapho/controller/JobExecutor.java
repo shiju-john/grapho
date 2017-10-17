@@ -16,7 +16,7 @@ import com.flytxt.grapho.service.JobService;
 
 /**
  * 
- * @author shijuj
+ * @author shiju.john
  *
  */
 @RequestMapping(path="/job")

@@ -8,7 +8,7 @@ import com.flytxt.grapho.exception.GraphoException;
 
 /**
  * 
- * @author shijuj
+ * @author shiju.john
  *
  */
 public enum DbTypes {

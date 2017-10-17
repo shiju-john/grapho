@@ -1,6 +1,7 @@
 package com.flytxt.grapho.exception;
 
 import java.io.Serializable;
+
 import org.springframework.http.HttpStatus;
 /**
  * 

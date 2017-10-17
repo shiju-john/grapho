@@ -7,7 +7,7 @@ import javax.persistence.Transient;
 
 /**
  * 
- * @author shijuj
+ * @author shiju.john
  *
  */
 public class ResultEntity implements FlyEntity {

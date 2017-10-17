@@ -13,7 +13,7 @@ import com.flytxt.grapho.entity.ResultEntity;
 import com.flytxt.grapho.exception.GraphoException;
 /**
  * 
- * @author shijuj
+ * @author shiju.john
  *
  */
 public class DbUtils {

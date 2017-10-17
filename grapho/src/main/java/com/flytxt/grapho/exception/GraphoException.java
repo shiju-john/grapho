@@ -2,7 +2,7 @@ package com.flytxt.grapho.exception;
 
 /**
  * 
- * @author shijuj
+ * @author shiju.john
  *
  */
 public class GraphoException extends Exception {
