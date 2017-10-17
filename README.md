@@ -59,7 +59,8 @@ passwd=${{password}},db=${{dbName}}",
 	}"	
 }
 </pre>
-#### 3. update Connector Meta
+
+#### 3. Update Connector Meta
 <pre>
 Service URL : grapho/connector/meta
 Request Type: PUT
@@ -81,4 +82,18 @@ passwd=${{password}},db=${{dbName}}",
 	}"	
 }
 </pre>
+
+#### 4. Delete Connector Meta
+<pre>
+Service URL : grapho/connector/meta/{id}
+Request Type: DELETE
+{id}        : Meta Id
+
+Response Data :
+{
+"connectorMetaId":"1",
+}
+</pre>
+
+
 
