@@ -115,7 +115,7 @@ curl request Sample
 
 curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" http://system:port/grapho/connector/meta
 
-### C. Connector MetaData Instance services 
+### C. Connector Meta Instance services 
 #### 1. Create Connector Instance 
 <pre>
 Service URL : grapho/connector
@@ -301,4 +301,7 @@ Response Data :
 
 Curl Request 
 
-curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X POST -d '[{"key":"instanceName","value":"MYSQL Connector","operation":"="},{"key":"scriptType","value":"Python","operation":"="}]' 'http://192.168.127.83:8080/grapho/connector/filter?pageNo=0&pageSize=2&sortField=instanceName&sortOrder=ASC'
+curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X POST -d '[{"key":"instanceName","value":"MYSQL Connector","operation":"="},{"key":"scriptType","value":"Python","operation":"="}]' 'http://system:port/grapho/connector/filter?pageNo=0&pageSize=2&sortField=instanceName&sortOrder=ASC'
+
+##### Connector meta pagination and filter services are also avilable with same requaet and response structure urls(grapho/connector/meta/page?... & grapho/connector/meta/filter?)
+
