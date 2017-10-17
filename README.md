@@ -239,7 +239,7 @@ Request Sample
 
 curl -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" 'http://system:port/grapho/connector/page?pageNo=1&pageSize=2&sortField=instanceName&sortOrder=ASC'
 
-#### 6. Connector Instance Search/Filter Service ( with out Pagination)
+#### 7. Connector Instance Search/Filter Service ( with out Pagination)
 <pre>
 Service URL   : grapho/connector/filter
 Request Type  : POST
@@ -264,3 +264,41 @@ Curl Request
 
 curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X POST -d '[{"key":"instanceName","value":"MYSQL Connector","operation":"="},{"key":"scriptType","value":"Python","operation":"="}]' http://system:port/grapho/connector/filter
 
+#### 8. Connector Instance Search/Filter Service ( with Pagination)
+<pre>
+Service URL   : grapho/connector/filter?pageNo=1&pageSize=2&sortField=instanceName&sortOrder=ASC
+Request Type  : POST
+
+Request Parameters :
+	pageNo 	 : Requested Page no, Start with 0
+	pageSize : Number  of items per page 
+	sortField: Name of  the sorting filed 
+	sortOrder: For asending ASC / For desending DESC
+
+Request Body  : Contains array of filter condition 
+[
+   {
+	"key":"instanceName",        //filter field 
+	"value":"MYSQL Connector",   //filter value 
+	"operation":"="		     //operator (implemented  operators  <= ,>=, =,like ) 
+   },
+   {
+   	"key":"scriptType",
+	"value":"Python",
+	"operation":"="
+   }
+]
+
+Response Data : 
+{
+   "content"		:[],    //content : Page content ,if exists 
+   "totalPage"		:1,	//totalPage: total no. of pages based on page size 
+   "totalElement"	:1,	//totalElement: Total record count
+   "hasNext"		:false,	//hasNext: true , if has next page otherwise false
+   "hasPrevious"	:true	//hasPrevious: true , if has previous  page otherwise false
+}
+</pre>	
+
+Curl Request 
+
+curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X POST -d '[{"key":"instanceName","value":"MYSQL Connector","operation":"="},{"key":"scriptType","value":"Python","operation":"="}]' 'http://192.168.127.83:8080/grapho/connector/filter?pageNo=0&pageSize=2&sortField=instanceName&sortOrder=ASC'
