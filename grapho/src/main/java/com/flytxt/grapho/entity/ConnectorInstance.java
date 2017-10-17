@@ -132,6 +132,7 @@ public class ConnectorInstance implements FlyEntity {
 	@Override
 	@Transient
 	@XmlTransient
+	@com.fasterxml.jackson.annotation.JsonIgnore
 	public Serializable getId() {
 		return instanceId;
 	}
