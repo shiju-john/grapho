@@ -14,19 +14,34 @@ Response JSON string contains access_token. Using this authorization token to ac
 
 Service url : grapho/connector/meta
 Request Type: POST
-Request Data : 
+Request Data :
+
 {
+
 "connectorName":"MYSQL connector",
+
 "validationRegEx":"",
-"configTemplate":"import MySQLdb \n${{connectionVariable}} = MySQLdb.connect(host=${{host}},user=${{userName}}, passwd=${{password}},db=${{dbName}}",
+
+"configTemplate":"import MySQLdb \n${{connectionVariable}} = MySQLdb.connect(host=${{host}},user=${{userName}}, 
+passwd=${{password}},db=${{dbName}}",
+
 "config":
+
 	"{"userName":"<value>",
+	
 	 "password":"<value>",
+	 
     	 "host":"<value>",
+	 
 	 "port":"<value>",
+	 
 	 "dbName":"<value>",
+	 
 	 "connectionVariable":"<value>"
+	 
 	}"
+	
 }
+
 
 
