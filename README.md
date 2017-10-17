@@ -1,5 +1,5 @@
 # Grapho
-This is the back end service for the dynamic chart.
+This is the back end service for the dynamic chart. Service side is written on top of Spring JPA. Which includes the JWT based Authorization using Asymmetrical Encryption.
 ## Services 
 Following are the different services avilable in this project 
 ### A. OAuth2 Service
