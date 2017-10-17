@@ -306,6 +306,8 @@ curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X P
 ##### Connector meta pagination and filter services are also avilable with same request and response structure.
 
  Pagination URL 	:  grapho/connector/meta/page?pageNo=1&pageSize=2&sortField=instanceName&sortOrder=ASC
+
  Filter/Search URL 	:  grapho/connector/meta/filter
+ 
  Filter with Pagination :  grapho/connector/meta/filter?pageNo=1&pageSize=2&sortField=instanceName&sortOrder=ASC
 
