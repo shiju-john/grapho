@@ -165,7 +165,7 @@ Curl Request sample :
 
 curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" http://system:port/grapho/connector/{id}
 
-#### 3. Update Connector Meta
+#### 3. Update Connector Instance
 <pre>
 Service URL : grapho/connector
 Request Type: PUT
@@ -189,7 +189,7 @@ curl request sample
 
 curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X PUT -d '{"instanceName":"MYSQL Connector","connectorRefId":"1","instanceConfig":"{\"userName\":\"USER\",\"password\":\"JAVA@123\",\"host\":\"localhost\",\"port\":\"3039\",\"dbName\":\"TEST_DB\",\"connectionVariable\":\"conn\"}","scriptType":"Python"}' http://192.168.127.82:8080/grapho/connector
 	
-#### 4. Delete Connector Meta
+#### 4. Delete Connector Instance
 <pre>
 Service URL : grapho/connector/{id}
 Request Type: DELETE
@@ -204,7 +204,7 @@ curl request Sample
 
 curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X DELETE  http://system:port/grapho/connector/{id}
 
-#### 5. Find All Connector Meta
+#### 5. Find All Connector Instance
 <pre>
 Service URL  : grapho/connector
 Request Type : GET
@@ -214,4 +214,28 @@ Response Data: Collection of Connector Instance
 curl request Sample 
 
 curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" http://system:port/grapho/connector
+
+#### 6. Connector Instance Pagination service
+<pre>
+Service URL   : grapho/connector/page?pageNo={value}&pageSize={value}&sortField={fieldName}&sortOrder={ASC/DESC}
+Request Type  : GET
+Request Parameters 
+	pageNo 	 :  Requested Page no, Start with 0
+	pageSize : Number  of items per page 
+	sortField: Name of  the sorting filed 
+	sortOrder: For asending ASC / For desending DESC
+	
+Response Data : 
+{
+   "content"		:[],    //content : Page content ,if exists 
+   "totalPage"		:1,	//totalPage: total no. of pages based on page size 
+   "totalElement"	:1,	//totalElement: Total record count
+   "hasNext"		:false,	//hasNext: true , if has next page otherwise false
+   "hasPrevious"	:true	//hasPrevious: true , if has previous  page otherwise false
+}
+</pre>
+
+Request Sample 
+
+curl -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" 'http://system:port/grapho/connector/page?pageNo=1&pageSize=2&sortField=instanceName&sortOrder=ASC'
 
