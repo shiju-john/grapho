@@ -5,5 +5,6 @@ Following are the different services avilable in this project
 ### A. OAuth2 Service
 #### 1. Authorization Token service 
 Service url : grapho/oauth/token
+
 Request Structure : curl -u <client_id>:<client_secret> http://<IP>:<port>/<context-root>/oauth/token -d "grant_type=password&username=<userName>&password=<Password>"
 
