@@ -8,3 +8,5 @@ Service url : grapho/oauth/token
 
 Request Structure : curl -u <client_id>:<client_secret> http://<IP>:<port>/<context-root>/oauth/token -d "grant_type=password&username=<userName>&password=<Password>"
 
+Response JSON string contains access_token. Set this authorization token to acces the services.
+
