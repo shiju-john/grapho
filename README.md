@@ -239,3 +239,28 @@ Request Sample
 
 curl -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" 'http://system:port/grapho/connector/page?pageNo=1&pageSize=2&sortField=instanceName&sortOrder=ASC'
 
+#### 6. Connector Instance Search/Filter Service ( with out Pagination)
+<pre>
+Service URL   : grapho/connector/filter
+Request Type  : POST
+Request Body  : Contains array of filter condition 
+[
+   {
+	"key":"instanceName",        //filter field 
+	"value":"MYSQL Connector",   //filter value 
+	"operation":"="		     //operator (implemented  operators  <= ,>=, =,like ) 
+   },
+   {
+   	"key":"scriptType",
+	"value":"Python",
+	"operation":"="
+   }
+]
+
+Response : Contains collection of filter applied connector instances 
+</pre>	
+
+Curl Request 
+
+curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X POST -d '[{"key":"instanceName","value":"MYSQL Connector","operation":"="},{"key":"scriptType","value":"Python","operation":"="}]' http://system:port/grapho/connector/filter
+
