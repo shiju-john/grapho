@@ -11,7 +11,7 @@ Request Structure : curl -u <client_id>:<client_secret> http://<IP>:<port>/<cont
 Response JSON string contains access_token. Using this authorization token to acces the services.
 ### B. Connector MetaData services 
 #### 1. Create Connector Meta
-
+<pre>
 Service url : grapho/connector/meta
 Request Type: POST
 Request Data :
@@ -42,6 +42,5 @@ passwd=${{password}},db=${{dbName}}",
 	}"
 	
 }"
-
-
+</pre>
 
