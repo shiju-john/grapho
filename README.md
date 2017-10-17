@@ -43,5 +43,23 @@ curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X P
 Service URL : grapho/connector/meta/{id}
 Request Type: GET
 {id}        : Meta Id 
+
+Response Data: 
+{
+"connectorMetaId":"1",
+"connectorName":"MYSQL connector",
+"validationRegEx":"",
+"configTemplate":"import MySQLdb \n${{connectionVariable}} = MySQLdb.connect(host=${{host}},user=${{userName}}, 
+passwd=${{password}},db=${{dbName}}",
+"config":
+	"{
+	 "userName":"<value>",
+	 "password":"<value>",
+    	 "host":"<value>",	 
+	 "port":"<value>",	 
+	 "dbName":"<value>",	 
+	 "connectionVariable":"<value>"	 
+	}"	
+}
 </pre>
 
