@@ -3,10 +3,12 @@ package com.flytxt.grapho.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.flytxt.grapho.dao.ConnectorMetaDAO;
 import com.flytxt.grapho.entity.ConnectorMetaData;
+import com.flytxt.grapho.entity.Pages;
 import com.flytxt.grapho.exception.GraphoException;
 import com.flytxt.grapho.filter.FilterCriteria;
 import com.querydsl.core.types.Predicate;
@@ -42,5 +44,14 @@ public class ConnectorMetaService extends AbstractService<ConnectorMetaData, Fil
 		Predicate predicate = super.getPredicate(ConnectorMetaData.class, "connectorMetaData", criterias);
 		return dao.findAll(predicate);
 	}
+	
+	@Override
+	public Pages<ConnectorMetaData> search(List<FilterCriteria> criterias, int pageNo, int pageSize, String sortField,
+			String sortOrder) throws GraphoException {
+		Predicate predicate = super.getPredicate(ConnectorMetaData.class, "connectorMetaData", criterias);
+		Page<ConnectorMetaData> page = dao.findAll(predicate,super.getPageRequest(pageNo, pageSize, sortField, sortOrder));
+		return getPaginationResult(page);
+	}
+
 
 }

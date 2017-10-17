@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.flytxt.grapho.entity.ConnectorMetaData;
+import com.flytxt.grapho.entity.Pages;
 import com.flytxt.grapho.exception.GraphoException;
 import com.flytxt.grapho.filter.FilterCriteria;
 import com.flytxt.grapho.service.ConnectorMetaService;
@@ -103,10 +104,10 @@ public class ConnectorMetaContoller extends GraphoController<ConnectorMetaData>{
 	  */
 	@RequestMapping(value = "/page", params = { "pageNo", "pageSize", "sortField",
 			"sortOrder" }, method = RequestMethod.GET)
-	public ResponseEntity<List<ConnectorMetaData>> findPage(@RequestParam("pageNo") Integer pageNo,
+	public ResponseEntity<Pages<ConnectorMetaData>> findPage(@RequestParam("pageNo") Integer pageNo,
 			@RequestParam("pageSize") Integer pageSize, @RequestParam("sortField") String sortField,
 			@RequestParam("sortOrder") String sortOrder) throws GraphoException {
-		List<ConnectorMetaData> connectorMetaDetails = service.findPage(pageNo, pageSize, sortField, sortOrder);
+		Pages<ConnectorMetaData> connectorMetaDetails = service.findPage(pageNo, pageSize, sortField, sortOrder);
 		return new ResponseEntity<>(connectorMetaDetails, HttpStatus.OK);
 
 	}

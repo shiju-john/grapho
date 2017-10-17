@@ -97,8 +97,9 @@ public class FlyDao<FlyEntity> {
 	 * @param pageRequest
 	 * @return
 	 */	
-	public Page<FlyEntity> findAll(Predicate exp, PageRequest pageRequest) {
-		return ((QueryDslPredicateExecutor)crudRepository).findAll(exp,pageRequest);
+	public Page<FlyEntity> findAll(Predicate exp, PageRequest pageRequest)  throws GraphoException {
+		Page<FlyEntity> result= ((QueryDslPredicateExecutor)crudRepository).findAll(exp,pageRequest);
+		return result;
 	}
 	
 	/**
@@ -107,7 +108,8 @@ public class FlyDao<FlyEntity> {
 	 * @return
 	 */
 	public Iterable<FlyEntity> findAll(Predicate predicate) {
-		return ((QueryDslPredicateExecutor)crudRepository).findAll(predicate);		
+		Iterable<FlyEntity> result= ((QueryDslPredicateExecutor)crudRepository).findAll(predicate);	
+		return result;
 	}
 	
 	/**
@@ -116,7 +118,8 @@ public class FlyDao<FlyEntity> {
 	 * @return
 	 */
 	public Page<FlyEntity> findPage(PageRequest pageRequest) {		
-		return ((PagingAndSortingRepository)crudRepository).findAll(pageRequest);
+		Page<FlyEntity> result= ((PagingAndSortingRepository)crudRepository).findAll(pageRequest);
+		return result;
 	}
 
 

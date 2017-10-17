@@ -2,6 +2,8 @@ package com.flytxt.grapho.service;
 
 import java.util.List;
 
+import com.flytxt.grapho.entity.Pages;
+
 /**
  * 
  * @author shiju.john
@@ -43,7 +45,7 @@ public interface FlyService<T, E> {
 	 * @return
 	 * @throws Exception
 	 */
-	public List<T> findPage(int pageNo, int pageSize, String sortField, String sortOrder) throws Exception;
+	public Pages<T> findPage(int pageNo, int pageSize, String sortField, String sortOrder) throws Exception;
 
 	/**
 	 * 
@@ -62,6 +64,15 @@ public interface FlyService<T, E> {
 	/**
 	 * 
 	 * @return
+	 */
+	public Pages<T> search(List<E> criteria, int pageNo, int pageSize, String sortField, String sortOrder)
+			throws Exception;
+
+	/** 
+	 * 
+	 * @param criteria
+	 * @return
+	 * @throws Exception
 	 */
 	public Iterable<T> search(List<E> criteria) throws Exception;
 

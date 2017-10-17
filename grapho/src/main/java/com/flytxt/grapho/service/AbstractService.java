@@ -7,7 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 
 import com.flytxt.grapho.dao.FlyDao;
-import com.flytxt.grapho.entity.ConnectorInstance;
+import com.flytxt.grapho.entity.Pages;
 import com.flytxt.grapho.exception.GraphoException;
 import com.flytxt.grapho.filter.FilterCriteria;
 import com.flytxt.grapho.filter.PredicatesBuilder;
@@ -30,7 +30,7 @@ public  abstract class AbstractService<T,E> implements FlyService<T,E>{
 	
 	@SuppressWarnings("rawtypes")	
 	public Predicate getPredicate(Class classType, String aliaceName,List<FilterCriteria> criterias) {
-		PredicatesBuilder<ConnectorInstance> builder = new PredicatesBuilder<>();
+		PredicatesBuilder builder = new PredicatesBuilder();
 		for(FilterCriteria criteria : criterias ){
 			builder.with(criteria);
 		}
@@ -43,9 +43,9 @@ public  abstract class AbstractService<T,E> implements FlyService<T,E>{
 	 * @param pageSize
 	 * @param sortField
 	 * @param sortOrder
-	 * @return
+	 * @return 
 	 */
-	private PageRequest getPageRequest(int pageNo,int pageSize,String sortField, String sortOrder){
+	protected PageRequest getPageRequest(int pageNo,int pageSize,String sortField, String sortOrder){
 		Direction direction =  null!=sortOrder ? "ASC".equalsIgnoreCase(sortOrder)?Direction.ASC:Direction.DESC:null;
 		return new PageRequest(pageNo, pageSize,direction,sortField);
 		
@@ -87,10 +87,23 @@ public  abstract class AbstractService<T,E> implements FlyService<T,E>{
 	}
 
 	@Override
-	public List<T> findPage(int pageNo,int pageSize,String sortField, String sortOrder) throws GraphoException{
+	public Pages<T> findPage(int pageNo,int pageSize,String sortField, String sortOrder) throws GraphoException{
 		Page<T> page =  dao.findPage(getPageRequest(pageNo, pageSize, sortField, sortOrder));
-		return page.getContent();		
+		return getPaginationResult(page);
 	}
 	
-
+	/**
+	 * 
+	 * @param page
+	 * @return
+	 */
+	protected Pages<T> getPaginationResult(Page<T> page) {
+		Pages<T> result =  new Pages<>();
+		result.setContent(page.getContent());
+		result.setTotalElement(page.getTotalElements());
+		result.setTotalPage(page.getTotalPages());
+		result.setHasPrevious(page.hasPrevious());
+		result.setHasNext(page.hasNext());		
+		return result;		
+	}
 }

@@ -1,7 +1,5 @@
 package com.flytxt.grapho.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.flytxt.grapho.entity.JobDetails;
+import com.flytxt.grapho.entity.Pages;
 import com.flytxt.grapho.exception.GraphoException;
 import com.flytxt.grapho.service.JobService;
 /**
@@ -98,12 +97,10 @@ public class JobController extends GraphoController<JobDetails> {
 	 * @return
 	 */
 	@RequestMapping( value = "/job/page",params = { "pageNo", "pageSize","sortField","sortOrder" },method = RequestMethod.GET )
-	public ResponseEntity<List<JobDetails>> findPage (@RequestParam( "pageNo" ) Integer pageNo, 
+	public ResponseEntity<Pages<JobDetails>> findPage (@RequestParam( "pageNo" ) Integer pageNo, 
 			@RequestParam( "pageSize" ) Integer pageSize,@RequestParam("sortField") String sortField,@RequestParam("sortOrder") String sortOrder) throws GraphoException {		
-		List<JobDetails>  jobDetails = jobService.findPage(pageNo,pageSize,sortField,sortOrder);			
-		return new ResponseEntity<>(jobDetails,HttpStatus.OK);
-		
+		Pages<JobDetails>  jobDetails = jobService.findPage(pageNo,pageSize,sortField,sortOrder);			
+		return new ResponseEntity<>(jobDetails,HttpStatus.OK);		
 	}
-	
 		
 }

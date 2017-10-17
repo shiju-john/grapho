@@ -15,7 +15,7 @@ public class ConnectorDAO extends FlyDao<ConnectorInstance>{
 
 		
 	@Autowired
-	ConnectorDAO(ConnectorRepository connectorRepository) {
+	public ConnectorDAO(ConnectorRepository connectorRepository) {
 		super(connectorRepository);		
 	}
 

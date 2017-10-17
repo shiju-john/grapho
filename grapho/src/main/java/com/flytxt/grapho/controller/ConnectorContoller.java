@@ -16,14 +16,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.flytxt.grapho.entity.ConnectorInstance;
+import com.flytxt.grapho.entity.Pages;
 import com.flytxt.grapho.exception.GraphoException;
 import com.flytxt.grapho.filter.FilterCriteria;
 import com.flytxt.grapho.service.ConnectorService;
 
 /**
- * 
  * @author shiju.john
- *
  */
 @Controller
 @CrossOrigin(origins = "*")
@@ -107,17 +106,31 @@ public class ConnectorContoller extends GraphoController<ConnectorInstance> {
 	
 	
 	
-	
 	/**
 	 * 
+	 * @param filterCriteria
+	 * @return
+	 * @throws GraphoException
+	 */
+	@RequestMapping(path="/filter",  params = { "pageNo", "pageSize","sortField","sortOrder" } , method = RequestMethod.POST)
+	public ResponseEntity<Pages<ConnectorInstance>> search(@RequestBody @Valid List<FilterCriteria> filterCriteria,@RequestParam("pageNo") Integer pageNo,
+			@RequestParam("pageSize") Integer pageSize,@RequestParam("sortField") String sortField,@RequestParam("sortOrder") String sortOrder)
+			throws GraphoException {
+		Pages<ConnectorInstance> connectorInstance = service.search(filterCriteria,pageNo, pageSize,sortField,sortOrder);
+		return new ResponseEntity<>(connectorInstance, HttpStatus.OK);
+	}
+	
+			
+	/**
+	 *  
 	 * @param pageNo
 	 * @param pageSize
 	 * @return
 	 */
 	@RequestMapping(value = "/page", params = { "pageNo", "pageSize","sortField","sortOrder" }, method = RequestMethod.GET)
-	public ResponseEntity<List<ConnectorInstance>> findPage(@RequestParam("pageNo") Integer pageNo,
+	public ResponseEntity<Pages<ConnectorInstance>> findPage(@RequestParam("pageNo") Integer pageNo,
 			@RequestParam("pageSize") Integer pageSize,@RequestParam("sortField") String sortField,@RequestParam("sortOrder") String sortOrder) throws GraphoException {
-		List<ConnectorInstance> jobDetails = service.findPage(pageNo, pageSize,sortField,sortOrder);
+		Pages<ConnectorInstance> jobDetails = service.findPage(pageNo, pageSize,sortField,sortOrder);
 		return new ResponseEntity<>(jobDetails, HttpStatus.OK);
 	}
 
