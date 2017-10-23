@@ -310,4 +310,30 @@ curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X P
  Filter/Search URL 	:  grapho/connector/meta/filter
  
  Filter with Pagination :  grapho/connector/meta/filter?pageNo=1&pageSize=2&sortField=instanceName&sortOrder=ASC
+ 
+### C. Zeppelin Configuration services 
 
+This  service will return an array of configuration key values those type is Zeppelin from the config_data table
+<pre>
+Service URL   : grapho/config/zeppelin
+Request Type  : GET
+Response Data : Contains array of configuration parameter 
+	[{	"key":"ZeppelinAuthUrl",
+		"value":"AuthReporstUrl",
+		"type":"Zeppelin",
+		"remarks":null
+	},
+	{	"key":"ZeppelinPort",
+		"value":"port",
+		"type":"Zeppelin",
+		"remarks":null
+	},
+	{	"key":"ZeppelinUrl",
+		"value":"url",
+		"type":"Zeppelin",
+		"remarks":null,
+	}]
+	</pre>
+Sample Request :
+
+fly@fly-LP442 ~ $ curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" http://system:port/grapho/config/zeppelin
