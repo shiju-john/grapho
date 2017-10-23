@@ -53,10 +53,13 @@ public class FilterPredicate<T>{
         return null;
     }
 
-
+	/**
+	 * 
+	 * @param value
+	 * @return
+	 */
 	private boolean isNumeric(String value) {
-		// TODO Auto-generated method stub
-		return false;
+		return value!=null?value.matches("-?\\d+(\\.\\d+)?")?true:false:false; 
 	}
-
+	
 }
