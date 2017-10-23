@@ -6,7 +6,7 @@ Following are the different services avilable in this project
 #### 1. Authorization Token service 
 Service url : grapho/oauth/token
 
-Request Structure : curl -u <client_id>:<client_secret> http://<IP>:<port>/<context-root>/oauth/token -d "grant_type=password&username=<userName>&password=<Password>"
+Request Structure : curl -u $client_id:$client_secret http://$IP:$port/$context-root/oauth/token -d "grant_type=password&username=$userName&password=$Password"
 
 Response JSON string contains access_token. Using this authorization token to acces the services.
 ### B. Connector MetaData services 
@@ -336,4 +336,4 @@ Response Data : Contains array of configuration parameter
 	</pre>
 Sample Request :
 
-fly@fly-LP442 ~ $ curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" http://system:port/grapho/config/zeppelin
+curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" http://system:port/grapho/config/zeppelin
