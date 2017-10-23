@@ -15,8 +15,10 @@ public interface FlyEntity extends Serializable{
 	 * 
 	 * @return
 	 */
+	
 	@Transient
 	@XmlTransient
+	@com.fasterxml.jackson.annotation.JsonIgnore
 	public Serializable getId();
 	 
 

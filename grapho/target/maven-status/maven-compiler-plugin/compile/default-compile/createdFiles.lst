@@ -40,6 +40,7 @@ com/flytxt/grapho/service/ConnectorService.class
 com/flytxt/grapho/filter/FilterCriteria.class
 com/flytxt/grapho/exception/MessageType.class
 com/flytxt/grapho/config/MessageConfig.class
+com/flytxt/grapho/entity/QConfigData.class
 com/flytxt/grapho/service/FlyService.class
 com/flytxt/grapho/commons/DbUtils.class
 com/flytxt/grapho/config/oauth2/resourceserver/JwtConfig.class

@@ -9,8 +9,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlTransient;
 /**
  * 
  * @author shiju.john
@@ -133,6 +135,9 @@ public class ConnectorMetaData implements FlyEntity{
 
 
 	@Override
+	@Transient
+	@XmlTransient
+	@com.fasterxml.jackson.annotation.JsonIgnore
 	public Serializable getId() {
 		return connectorMetaId;
 	}
