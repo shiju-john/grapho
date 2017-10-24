@@ -17,7 +17,12 @@ public class PredicatesBuilder<T> {
     public PredicatesBuilder() {
         params = new ArrayList<>();
     }
-	 
+	
+    /**
+     * 
+     * @param criteria
+     * @return
+     */
     public PredicatesBuilder<T> with(FilterCriteria criteria) {	   
         params.add(criteria);
         return this;
@@ -29,7 +34,7 @@ public class PredicatesBuilder<T> {
 	 * @return
 	 */
     @SuppressWarnings("rawtypes")
-	public BooleanExpression build(Class  entity,String aliasName) {
+	public BooleanExpression build(Class entity,String aliasName) {
         if (params.size() == 0) {
             return null;
         }
