@@ -10,7 +10,7 @@ import com.flytxt.grapho.entity.Pages;
  *
  * @param <T>
  */
-public interface FlyService<T, E> {
+public interface GraphoService<T, E> {
 
 	/**
 	 * 

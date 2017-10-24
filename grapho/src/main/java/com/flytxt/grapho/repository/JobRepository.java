@@ -4,7 +4,6 @@ import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-import com.flytxt.grapho.entity.ConnectorInstance;
 import com.flytxt.grapho.entity.JobDetails;
 /**
  * 
@@ -13,7 +12,7 @@ import com.flytxt.grapho.entity.JobDetails;
  */
 public interface JobRepository  extends CrudRepository<JobDetails, Long> ,
 					PagingAndSortingRepository<JobDetails, Long>,
-					QueryDslPredicateExecutor<ConnectorInstance>{
+					QueryDslPredicateExecutor<JobDetails>{
 
 }
 

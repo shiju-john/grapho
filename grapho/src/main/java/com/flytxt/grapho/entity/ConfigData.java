@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Table(name="config_data")
 @Entity
-public class ConfigData implements FlyEntity{
+public class ConfigData implements GraphoEntity{
 
 	/**
 	 * 
@@ -79,6 +79,8 @@ public class ConfigData implements FlyEntity{
 	/**
 	 * @return the type
 	 */
+	@XmlTransient
+	@com.fasterxml.jackson.annotation.JsonIgnore
 	public String getType() {
 		return type;
 	}
@@ -86,6 +88,7 @@ public class ConfigData implements FlyEntity{
 	/**
 	 * @param type the type to set
 	 */
+	
 	public void setType(String type) {
 		this.type = type;
 	}
@@ -93,6 +96,8 @@ public class ConfigData implements FlyEntity{
 	/**
 	 * @return the remarks
 	 */
+	@XmlTransient
+	@com.fasterxml.jackson.annotation.JsonIgnore
 	public String getRemarks() {
 		return remarks;
 	}

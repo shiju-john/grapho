@@ -3,6 +3,7 @@ package com.flytxt.grapho.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.flytxt.grapho.dao.ConfigDao;
@@ -28,15 +29,15 @@ public class ConfigService extends AbstractService<ConfigData, FilterCriteria>{
 
 	@Override
 	public ConfigData get(ConfigData entity) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		return dao.get(entity.getKey());
 	}
 
 	@Override
-	public Pages<ConfigData> search(List<FilterCriteria> criteria, int pageNo, int pageSize, String sortField,
-			String sortOrder) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public Pages<ConfigData> search(List<FilterCriteria> criterias, int pageNo, int pageSize, String sortField,
+			String sortOrder) throws Exception {		
+		Predicate predicate = super.getPredicate(ConfigData.class, "configData", criterias);
+		Page<ConfigData> page = dao.findAll(predicate,super.getPageRequest(pageNo, pageSize, sortField, sortOrder));
+		return getPaginationResult(page);
 	}
 
 	@Override

@@ -7,7 +7,6 @@ com/flytxt/grapho/controller/JobExecutor.class
 com/flytxt/grapho/commons/DbTypes.class
 com/flytxt/grapho/entity/ResultEntity.class
 com/flytxt/grapho/controller/ConnectorMetaContoller.class
-com/flytxt/grapho/dao/FlyDao.class
 com/flytxt/grapho/controller/JobController.class
 com/flytxt/grapho/entity/ConnectorInstance.class
 com/flytxt/grapho/repository/ConnectorMetaRepository.class
@@ -22,7 +21,6 @@ com/flytxt/grapho/config/oauth2/resourceserver/GlobalMethodSecurityConfig.class
 com/flytxt/grapho/entity/JobDetails.class
 com/flytxt/grapho/service/JobService.class
 com/flytxt/grapho/dao/ConnectorDAO.class
-com/flytxt/grapho/entity/FlyEntity.class
 com/flytxt/grapho/entity/QConnectorInstance.class
 com/flytxt/grapho/config/oauth2/authserver/DBAuthenticationBuilder.class
 com/flytxt/grapho/controller/ConnectorContoller.class
@@ -41,7 +39,6 @@ com/flytxt/grapho/filter/FilterCriteria.class
 com/flytxt/grapho/exception/MessageType.class
 com/flytxt/grapho/config/MessageConfig.class
 com/flytxt/grapho/entity/QConfigData.class
-com/flytxt/grapho/service/FlyService.class
 com/flytxt/grapho/commons/DbUtils.class
 com/flytxt/grapho/config/oauth2/resourceserver/JwtConfig.class
 com/flytxt/grapho/config/MessageHandler.class

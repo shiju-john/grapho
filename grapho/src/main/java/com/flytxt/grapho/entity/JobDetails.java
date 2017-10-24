@@ -20,7 +20,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name ="job_details")
-public class JobDetails  implements FlyEntity{
+public class JobDetails  implements GraphoEntity{
 	
 	/**
 	 * 

@@ -10,7 +10,7 @@ import javax.persistence.Transient;
  * @author shiju.john
  *
  */
-public class ResultEntity implements FlyEntity {
+public class ResultEntity implements GraphoEntity {
 
 	/**
 	 * 

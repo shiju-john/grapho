@@ -16,16 +16,16 @@ import com.querydsl.core.types.Predicate;
  * 
  * @author shiju.john
  *
- * @param <FlyEntity>
+ * @param <GraphoEntity>
  */
 @SuppressWarnings({ "unchecked", "rawtypes" })
-public class FlyDao<FlyEntity> {
+public class GraphoDao<GraphoEntity> {
 	
-	private static final Logger logger = LoggerFactory.getLogger(FlyDao.class);	
+	private static final Logger logger = LoggerFactory.getLogger(GraphoDao.class);	
 	private CrudRepository crudRepository;
 	
 	
-	public FlyDao(CrudRepository crudRepository){
+	public GraphoDao(CrudRepository crudRepository){
 		this.crudRepository = crudRepository;
 	}
 	
@@ -36,19 +36,19 @@ public class FlyDao<FlyEntity> {
 	 * @throws GraphoException
 	 */
 
-	public FlyEntity save(FlyEntity entity)  throws GraphoException{
+	public GraphoEntity save(GraphoEntity entity)  throws GraphoException{
 		try {
-			return (FlyEntity)crudRepository.save(entity);
+			return (GraphoEntity)crudRepository.save(entity);
 		}catch(Exception e){
 			logger.error(e.getMessage(),e);
 			throw new GraphoException(e.getMessage(),e);
 		}
 	}
 	
-	public FlyEntity update(FlyEntity entity)  throws GraphoException{
+	public GraphoEntity update(GraphoEntity entity)  throws GraphoException{
 		try {
 			
-			return (FlyEntity)crudRepository.save(entity);
+			return (GraphoEntity)crudRepository.save(entity);
 		}catch(Exception e){
 			logger.error(e.getMessage(),e);
 			throw new GraphoException(e.getMessage(),e);
@@ -60,9 +60,9 @@ public class FlyDao<FlyEntity> {
 	 * @return
 	 * @throws GraphoException
 	 */
-	public FlyEntity get(Serializable entity) throws GraphoException{ 
+	public GraphoEntity get(Serializable entity) throws GraphoException{ 
 		try {
-			FlyEntity flyEntity  = (FlyEntity)crudRepository.findOne(entity);
+			GraphoEntity flyEntity  = (GraphoEntity)crudRepository.findOne(entity);
 			if(null==flyEntity)
 				throw new GraphoException("error.common.notfound", null);			
 			return flyEntity;
@@ -74,11 +74,21 @@ public class FlyDao<FlyEntity> {
 	
 	/**
 	 * 
+	 * @param entity
+	 * @return
+	 * @throws GraphoException
+	 */
+	public boolean isExists(Serializable id) throws GraphoException {
+		return crudRepository.exists(id);		
+	}
+	
+	/**
+	 * 
 	 * @param jobDetails
 	 * @return
 	 */
-	public void delete(FlyEntity entity) {
-		 crudRepository.delete(entity);
+	public void delete(GraphoEntity entity) throws GraphoException{		
+		 crudRepository.delete(entity);	
 	}
 	
 	/**
@@ -86,7 +96,7 @@ public class FlyDao<FlyEntity> {
 	 * @return
 	 */
 	
-	public Iterable<FlyEntity> findAll() {
+	public Iterable<GraphoEntity> findAll() {
 		return crudRepository.findAll();
 	}
 	
@@ -97,8 +107,8 @@ public class FlyDao<FlyEntity> {
 	 * @param pageRequest
 	 * @return
 	 */	
-	public Page<FlyEntity> findAll(Predicate exp, PageRequest pageRequest)  throws GraphoException {
-		Page<FlyEntity> result= ((QueryDslPredicateExecutor)crudRepository).findAll(exp,pageRequest);
+	public Page<GraphoEntity> findAll(Predicate exp, PageRequest pageRequest)  throws GraphoException {
+		Page<GraphoEntity> result= ((QueryDslPredicateExecutor)crudRepository).findAll(exp,pageRequest);
 		return result;
 	}
 	
@@ -107,8 +117,8 @@ public class FlyDao<FlyEntity> {
 	 * @param predicate
 	 * @return
 	 */
-	public Iterable<FlyEntity> findAll(Predicate predicate) {
-		Iterable<FlyEntity> result= ((QueryDslPredicateExecutor)crudRepository).findAll(predicate);	
+	public Iterable<GraphoEntity> findAll(Predicate predicate) {
+		Iterable<GraphoEntity> result= ((QueryDslPredicateExecutor)crudRepository).findAll(predicate);	
 		return result;
 	}
 	
@@ -117,8 +127,8 @@ public class FlyDao<FlyEntity> {
 	 * @param pageRequest
 	 * @return
 	 */
-	public Page<FlyEntity> findPage(PageRequest pageRequest) {		
-		Page<FlyEntity> result= ((PagingAndSortingRepository)crudRepository).findAll(pageRequest);
+	public Page<GraphoEntity> findPage(PageRequest pageRequest) {		
+		Page<GraphoEntity> result= ((PagingAndSortingRepository)crudRepository).findAll(pageRequest);
 		return result;
 	}
 

@@ -18,7 +18,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "connector_instance")
-public class ConnectorInstance implements FlyEntity {
+public class ConnectorInstance implements GraphoEntity {
 
 	
 	private static final long serialVersionUID = 1L;	

@@ -11,7 +11,7 @@ import com.flytxt.grapho.repository.ConnectorMetaRepository;
  *
  */
 @Component
-public class ConnectorMetaDAO extends FlyDao<ConnectorMetaData>{
+public class ConnectorMetaDAO extends GraphoDao<ConnectorMetaData>{
 	
 	
 	@Autowired

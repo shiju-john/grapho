@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author shiju.john
  *
  */
-public interface FlyEntity extends Serializable{
+public interface GraphoEntity extends Serializable{
 	
 	/**
 	 * 

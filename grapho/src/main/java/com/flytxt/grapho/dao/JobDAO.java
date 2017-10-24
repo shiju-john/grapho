@@ -16,7 +16,7 @@ import com.flytxt.grapho.repository.JobRepository;
  *
  */
 @Component
-public class JobDAO extends FlyDao<JobDetails> {
+public class JobDAO extends GraphoDao<JobDetails> {
 		
 	private JobRepository  jobRepository;
 	

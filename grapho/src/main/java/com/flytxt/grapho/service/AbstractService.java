@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort.Direction;
 
-import com.flytxt.grapho.dao.FlyDao;
+import com.flytxt.grapho.dao.GraphoDao;
 import com.flytxt.grapho.entity.Pages;
 import com.flytxt.grapho.exception.GraphoException;
 import com.flytxt.grapho.filter.FilterCriteria;
@@ -19,11 +19,11 @@ import com.querydsl.core.types.Predicate;
  * @param <T>
  * @param <E> 
  */
-public  abstract class AbstractService<T,E> implements FlyService<T,E>{
+public  abstract class AbstractService<T,E> implements GraphoService<T,E>{
 
-	private FlyDao<T> dao;
+	private GraphoDao<T> dao;
 	
-	public AbstractService(FlyDao<T> dao){
+	public AbstractService(GraphoDao<T> dao){
 		this.dao = dao;
 	}
 	
@@ -61,8 +61,11 @@ public  abstract class AbstractService<T,E> implements FlyService<T,E>{
 	
 	@Override
 	public T delete(T entity) throws GraphoException {
-		dao.delete(entity);
-		return entity;
+		if(dao.isExists(((com.flytxt.grapho.entity.GraphoEntity)entity).getId())){
+			dao.delete(entity);
+			return entity;
+		}
+		throw new GraphoException("error.common.notfound", null);
 	}
 	
 	/**
@@ -73,7 +76,10 @@ public  abstract class AbstractService<T,E> implements FlyService<T,E>{
 	 */
 	@Override
 	public T update(T entity) throws GraphoException {
-		return dao.save(entity);
+		if(dao.isExists(((com.flytxt.grapho.entity.GraphoEntity)entity).getId())){
+			return dao.save(entity);
+		}
+		throw new GraphoException("error.common.notfound", null);
 	}
 	
 

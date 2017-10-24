@@ -1,6 +1,6 @@
 package com.flytxt.grapho.filter;
 
-import com.flytxt.grapho.entity.FlyEntity;
+import com.flytxt.grapho.entity.GraphoEntity;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.core.types.dsl.NumberPath;
 import com.querydsl.core.types.dsl.PathBuilder;
@@ -29,7 +29,7 @@ public class FilterPredicate<T>{
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public BooleanExpression getPredicate(Class entity,String aliaceName) {		
-		PathBuilder<? extends FlyEntity> entityPath = new PathBuilder<>(entity, aliaceName);
+		PathBuilder<? extends GraphoEntity> entityPath = new PathBuilder<>(entity, aliaceName);
          if (isNumeric(criteria.getValue())) {
             NumberPath<Integer> path = entityPath.getNumber(criteria.getKey(), Integer.class);
             int value = Integer.parseInt(criteria.getValue().toString());

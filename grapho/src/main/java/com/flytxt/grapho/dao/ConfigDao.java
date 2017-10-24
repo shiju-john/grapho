@@ -11,7 +11,7 @@ import com.flytxt.grapho.repository.ConfigRepository;
  * @param <ConfigData>
  */
 @Component
-public class ConfigDao<ConfigData> extends FlyDao<ConfigData> {
+public class ConfigDao<ConfigData> extends GraphoDao<ConfigData> {
 
 	@Autowired
 	public ConfigDao(ConfigRepository configRepo) {

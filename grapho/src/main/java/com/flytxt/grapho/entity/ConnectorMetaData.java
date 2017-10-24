@@ -20,7 +20,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "connector_metadata")
-public class ConnectorMetaData implements FlyEntity{
+public class ConnectorMetaData implements GraphoEntity{
 
 	
 	private static final long serialVersionUID = 1L;
