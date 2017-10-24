@@ -319,19 +319,13 @@ Service URL   : grapho/config/zeppelin
 Request Type  : GET
 Response Data : Contains array of configuration parameter 
 	[{	"key":"ZeppelinAuthUrl",
-		"value":"AuthReporstUrl",
-		"type":"Zeppelin",
-		"remarks":null
+		"value":"AuthReporstUrl"
 	},
 	{	"key":"ZeppelinPort",
-		"value":"port",
-		"type":"Zeppelin",
-		"remarks":null
+		"value":"port"
 	},
 	{	"key":"ZeppelinUrl",
-		"value":"url",
-		"type":"Zeppelin",
-		"remarks":null,
+		"value":"url"
 	}]
 	</pre>
 Sample Request :
