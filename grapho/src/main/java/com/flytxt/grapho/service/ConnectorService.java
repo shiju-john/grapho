@@ -38,7 +38,7 @@ public class ConnectorService extends AbstractService<ConnectorInstance,FilterCr
 	@Override
 	public boolean validate(ConnectorInstance entity) throws GraphoException {
 		if (!metaDao.isExists(entity.getConnectorRefId())){
-			throw new GraphoException("error.connectorinstance.metanotfound", null,"connectorRefId");
+			throw new GraphoException("error.connectorinstance.metaNotFound", null,"connectorRefId");
 		}
 		return true;
 	};
