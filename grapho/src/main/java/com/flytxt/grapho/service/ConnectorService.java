@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import com.flytxt.grapho.dao.ConnectorDAO;
+import com.flytxt.grapho.dao.ConnectorMetaDAO;
 import com.flytxt.grapho.entity.ConnectorInstance;
 import com.flytxt.grapho.entity.Pages;
 import com.flytxt.grapho.exception.GraphoException;
@@ -25,10 +26,22 @@ public class ConnectorService extends AbstractService<ConnectorInstance,FilterCr
 	private ConnectorDAO dao;
 	
 	@Autowired
+	private ConnectorMetaDAO metaDao;
+	
+	@Autowired
 	public ConnectorService(ConnectorDAO dao){
 		super(dao);
 		this.dao = dao;
 	}
+	
+	
+	@Override
+	public boolean validate(ConnectorInstance entity) throws GraphoException {
+		if (!metaDao.isExists(entity.getConnectorRefId())){
+			throw new GraphoException("error.connectorinstance.metanotfound", null,"connectorRefId");
+		}
+		return true;
+	};
 	
 	/**
 	 * 

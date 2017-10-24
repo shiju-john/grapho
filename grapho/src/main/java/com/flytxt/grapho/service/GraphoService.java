@@ -75,5 +75,15 @@ public interface GraphoService<T, E> {
 	 * @throws Exception
 	 */
 	public Iterable<T> search(List<E> criteria) throws Exception;
+	
+	/**
+	 * 
+	 * @param entity
+	 * @return
+	 * @throws Exception
+	 */
+	default public boolean validate(T entity) throws Exception{
+		return true;
+	}
 
 }

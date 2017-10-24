@@ -29,7 +29,7 @@ public class PredicatesBuilder<T> {
 	 * @return
 	 */
     @SuppressWarnings("rawtypes")
-	public BooleanExpression build(Class  entity,String aliaceName) {
+	public BooleanExpression build(Class  entity,String aliasName) {
         if (params.size() == 0) {
             return null;
         }
@@ -38,7 +38,7 @@ public class PredicatesBuilder<T> {
         FilterPredicate<T> predicate;
         for (FilterCriteria param : params) {
             predicate = new FilterPredicate<T>(param);
-            BooleanExpression exp = predicate.getPredicate(entity,aliaceName);
+            BooleanExpression exp = predicate.getPredicate(entity,aliasName);
             if (exp != null) {
                 predicates.add(exp);
             }

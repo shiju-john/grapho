@@ -29,12 +29,12 @@ public  abstract class AbstractService<T,E> implements GraphoService<T,E>{
 	
 	
 	@SuppressWarnings("rawtypes")	
-	public Predicate getPredicate(Class classType, String aliaceName,List<FilterCriteria> criterias) {
+	public Predicate getPredicate(Class classType, String aliasName,List<FilterCriteria> criterias) {
 		PredicatesBuilder builder = new PredicatesBuilder();
 		for(FilterCriteria criteria : criterias ){
 			builder.with(criteria);
 		}
-		return  builder.build(classType,aliaceName);
+		return  builder.build(classType,aliasName);
 	}	
 	
 	/**
@@ -56,7 +56,23 @@ public  abstract class AbstractService<T,E> implements GraphoService<T,E>{
 	 */
 	@Override
 	public T save(T entity)  throws GraphoException{
+		validateEntity(entity);
 		return dao.save(entity);
+	}
+	
+	/**
+	 * 
+	 * @param entity
+	 * @throws GraphoException
+	 */
+	private void validateEntity(T entity)  throws GraphoException {
+		try{
+			validate(entity);			
+		}catch(GraphoException e){
+			throw e;
+		}catch(Exception e){
+			throw new GraphoException(e.getMessage(), e);
+		}
 	}
 	
 	@Override
@@ -77,6 +93,7 @@ public  abstract class AbstractService<T,E> implements GraphoService<T,E>{
 	@Override
 	public T update(T entity) throws GraphoException {
 		if(dao.isExists(((com.flytxt.grapho.entity.GraphoEntity)entity).getId())){
+			validateEntity(entity);
 			return dao.save(entity);
 		}
 		throw new GraphoException("error.common.notfound", null);

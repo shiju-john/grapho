@@ -44,15 +44,15 @@ public class MessageHandler {
 	}
 
 	@ExceptionHandler(SQLException.class)
-	public ResponseEntity<Object> handleSQLException(HttpServletRequest request, Exception ex) {
+	public ResponseEntity<Object> handleSQLException(HttpServletRequest request, SQLException ex) {
 		return new ResponseEntity<Object>(new ApiError(MessageType.ERROR, getErrorMessage(ex.getLocalizedMessage()),
 				null, HttpStatus.EXPECTATION_FAILED), HttpStatus.EXPECTATION_FAILED);
 	}
 
 	@ExceptionHandler(GraphoException.class)
-	public ResponseEntity<Object> handleGraphoException(HttpServletRequest request, Exception ex) {
+	public ResponseEntity<Object> handleGraphoException(HttpServletRequest request, GraphoException ex) {
 		return new ResponseEntity<Object>(new ApiError(MessageType.ERROR, getErrorMessage(ex.getLocalizedMessage()),
-				null, HttpStatus.EXPECTATION_FAILED), HttpStatus.EXPECTATION_FAILED);
+				ex.getFieldName(), HttpStatus.EXPECTATION_FAILED), HttpStatus.EXPECTATION_FAILED);
 	}
 
 	/**
