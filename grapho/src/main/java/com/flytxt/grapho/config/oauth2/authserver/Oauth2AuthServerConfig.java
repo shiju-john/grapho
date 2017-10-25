@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
@@ -34,18 +35,24 @@ public class Oauth2AuthServerConfig extends AuthorizationServerConfigurerAdapter
     @Qualifier("authenticationManagerBean")
     private AuthenticationManager authenticationManager;
     
+    @Autowired
+    private UserDetailsService userDetailsService;
+    
    
 	@Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {		
-		clients.jdbc(dataSource);    
+		clients.jdbc(dataSource);   
+		
     }
 	
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.tokenStore(tokenStore())
+        
         .tokenEnhancer(jwtTokenEnhancer())
-        .authenticationManager(authenticationManager);
+        .authenticationManager(authenticationManager)
+        .userDetailsService(userDetailsService);      
     }
 
 
@@ -67,6 +74,7 @@ public class Oauth2AuthServerConfig extends AuthorizationServerConfigurerAdapter
 			throws Exception {
 		oauthServer.tokenKeyAccess("permitAll()").checkTokenAccess(
 				"isAuthenticated()");
+		
 	}   
 
 

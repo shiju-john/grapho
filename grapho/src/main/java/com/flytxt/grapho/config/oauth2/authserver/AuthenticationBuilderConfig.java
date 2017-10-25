@@ -15,7 +15,8 @@ import org.springframework.context.annotation.Primary;
 @Configuration
 @EnableConfigurationProperties
 public class AuthenticationBuilderConfig {
-    @Value("${authentication.AuthenticationBuilder}")
+    
+	@Value("${authentication.AuthenticationBuilder}")
     private String authenticationBuilder;
     
     @Bean
