@@ -3,7 +3,6 @@ com/flytxt/grapho/config/oauth2/authserver/AuthenticationBuilderConfig.class
 com/flytxt/grapho/entity/ConnectorMetaData.class
 com/flytxt/grapho/exception/GraphoException.class
 com/flytxt/grapho/filter/PredicatesBuilder.class
-com/flytxt/grapho/controller/JobExecutor.class
 com/flytxt/grapho/commons/DbTypes.class
 com/flytxt/grapho/entity/ResultEntity.class
 com/flytxt/grapho/controller/ConnectorMetaContoller.class

@@ -53,6 +53,11 @@ public class ConnectorMetaData implements GraphoEntity{
 	@Size(max=1000, message="Reg Expression should be less than 1000 charcters")
 	private String  validationRegEx;
 
+	@NotNull(message="error.common.notnull")
+	@Column(name= "ci_script_type" , length = 50)
+	@Size(max=50,message="Name should be less than 50 characters")
+	private String scriptType;
+	
 
 	/**
 	 * @return the connectorName
@@ -141,5 +146,23 @@ public class ConnectorMetaData implements GraphoEntity{
 	public Serializable getId() {
 		return connectorMetaId;
 	}
+
+
+	/**
+	 * @return the scriptType
+	 */
+	public String getScriptType() {
+		return scriptType;
+	}
+
+
+	/**
+	 * @param scriptType the scriptType to set
+	 */
+	public void setScriptType(String scriptType) {
+		this.scriptType = scriptType;
+	}
+	
+	
 
 }

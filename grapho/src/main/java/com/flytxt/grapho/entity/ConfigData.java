@@ -39,6 +39,18 @@ public class ConfigData implements GraphoEntity{
 	
 	
 	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * 
+	 * @param key
+	 */
+	public ConfigData(String key) {
+		this.setKey(key);
+	}
+	
+	public ConfigData() {
+		
+	}
 
 	@Override
 	@Transient

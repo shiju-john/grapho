@@ -27,8 +27,6 @@ public class QConnectorInstance extends EntityPathBase<ConnectorInstance> {
 
     public final StringPath instanceName = createString("instanceName");
 
-    public final StringPath scriptType = createString("scriptType");
-
     public QConnectorInstance(String variable) {
         super(ConnectorInstance.class, forVariable(variable));
     }

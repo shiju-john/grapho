@@ -15,6 +15,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
+
 /**
  * 
  * @author shiju.john
@@ -26,25 +27,22 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	Logger log = LoggerFactory.getLogger(WebSecurityConfig.class);
-		
+
 	@Autowired
-	AuthenticationType authType;
-	
-	
+	private AuthenticationType authType;
 	
 	@Override
 	@Bean
 	@Primary
 	public AuthenticationManager authenticationManagerBean() throws Exception {
-		return super.authenticationManager();		
+		return super.authenticationManager();
 	}
 	
-	
-	@Bean	
-	public UserDetailsService userDetailsService() {
-		return super.userDetailsService();	
-	}
 
+	@Bean
+	public UserDetailsService userDetailsService() {
+		return super.userDetailsService();
+	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -52,11 +50,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.authenticationEntryPoint(
 						(request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
 				.and().authorizeRequests().antMatchers("/oauth/**").authenticated().and().httpBasic();
-				//.and().authorizeRequests().antMatchers("/grapho/**").permitAll().and().httpBasic();
+		// .and().authorizeRequests().antMatchers("/grapho/**").permitAll().and().httpBasic();
 	}
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		authType.setAuthenticationManager(auth);		
+		authType.setAuthenticationManager(auth);
 	}
 }

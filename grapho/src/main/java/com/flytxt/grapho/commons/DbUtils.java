@@ -16,6 +16,7 @@ import com.flytxt.grapho.exception.GraphoException;
  * @author shiju.john
  *
  */
+@Deprecated
 public class DbUtils {
 	
 	public static Connection getConnection(String driverName,

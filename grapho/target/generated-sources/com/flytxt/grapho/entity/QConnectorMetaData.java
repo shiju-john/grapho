@@ -27,6 +27,8 @@ public class QConnectorMetaData extends EntityPathBase<ConnectorMetaData> {
 
     public final StringPath connectorName = createString("connectorName");
 
+    public final StringPath scriptType = createString("scriptType");
+
     public final StringPath validationRegEx = createString("validationRegEx");
 
     public QConnectorMetaData(String variable) {

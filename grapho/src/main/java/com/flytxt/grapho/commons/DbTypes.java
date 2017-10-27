@@ -11,6 +11,7 @@ import com.flytxt.grapho.exception.GraphoException;
  * @author shiju.john
  *
  */
+@Deprecated
 public enum DbTypes {
 	
 	MYSQL("MYSQL","com.mysql.jdbc.Driver") {

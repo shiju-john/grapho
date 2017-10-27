@@ -26,5 +26,11 @@ public class GraphoController<FlyEntity> {
 		return new ResponseEntity<FlyEntity>((FlyEntity)error,HttpStatus.BAD_REQUEST);
 		
 	}
+	
+	/*@RequestMapping(value = "/logout", method = RequestMethod.GET)
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void logout(HttpSession session) {
+	    session.invalidate();
+	}*/
 
 }

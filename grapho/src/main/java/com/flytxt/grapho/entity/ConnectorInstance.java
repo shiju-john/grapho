@@ -43,11 +43,7 @@ public class ConnectorInstance implements GraphoEntity {
 	private String instanceConfig;
 
  
-	@NotNull(message="error.common.notnull")
-	@Column(name= "ci_script_type" , unique= true , length = 50)
-	@Size(max=50,message="Name should be less than 50 characters")
-	private String scriptType;
-	
+		
 	/**
 	 * @return the instanceId
 	 */
@@ -113,20 +109,6 @@ public class ConnectorInstance implements GraphoEntity {
 	}
 
 
-	/**
-	 * @return the scriptType
-	 */
-	public String getScriptType() {
-		return scriptType;
-	}
-
-
-	/**
-	 * @param scriptType the scriptType to set
-	 */
-	public void setScriptType(String scriptType) {
-		this.scriptType = scriptType;
-	}
 
 
 	@Override

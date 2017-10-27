@@ -10,6 +10,7 @@ import javax.persistence.Transient;
  * @author shiju.john
  *
  */
+@Deprecated
 public class ResultEntity implements GraphoEntity {
 
 	/**
