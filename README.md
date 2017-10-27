@@ -18,6 +18,7 @@ Request Data :
 {
 "connectorName":"MYSQL connector",
 "validationRegEx":"",
+"scriptType"     :"Python",
 "configTemplate":"import MySQLdb \n${{connectionVariable}} = MySQLdb.connect(host=${{host}},user=${{userName}}, 
 passwd=${{password}},db=${{dbName}}",
 "config":
@@ -34,7 +35,7 @@ passwd=${{password}},db=${{dbName}}",
 
 Curl Request sample : 
 
-curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X POST -d '{"connectorName":"MYSQL 				 connector","validationRegEx":"","configTemplate":"import MySQLdb \n${{connectionVariable}} = MySQLdb.connect(host=${{host}},user=${{userName}}, passwd=${{password}},db=${{dbName}}","config":"{\"userName\":\"<value>\",\"password\":\"<value>\",\"host\":\"<value>\",\"port\":\"<value>\",\"dbName\":\"<value>\",\"connectionVariable\":\"<value>\"}"}' http://system:port/grapho/connector/meta
+curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X POST -d '{"connectorName":"MYSQL 				 connector","validationRegEx":"","configTemplate":"import MySQLdb \n${{connectionVariable}} = MySQLdb.connect(host=${{host}},user=${{userName}}, passwd=${{password}},db=${{dbName}}","config":"{\"userName\":\"<value>\",\"password\":\"<value>\",\"host\":\"<value>\",\"port\":\"<value>\",\"dbName\":\"<value>\",\"connectionVariable\":\"<value>\"}","scriptType":"Python"}' http://system:port/grapho/connector/meta
 
 #### 2. Read Connector Meta
 <pre>
@@ -46,6 +47,7 @@ Response Data:
 "connectorMetaId":"1",
 "connectorName":"MYSQL connector",
 "validationRegEx":"",
+"scriptType":"Python",
 "configTemplate":"import MySQLdb \n${{connectionVariable}} = MySQLdb.connect(host=${{host}},user=${{userName}}, 
 passwd=${{password}},db=${{dbName}}",
 "config":
@@ -72,6 +74,7 @@ Request Data :
 "connectorMetaId":"1",
 "connectorName":"MYSQL connector",
 "validationRegEx":"",
+"scriptType":"Python",
 "configTemplate":"import MySQLdb \n${{connectionVariable}} = MySQLdb.connect(host=${{host}},user=${{userName}}, 
 passwd=${{password}},db=${{dbName}}",
 "config":
@@ -87,7 +90,7 @@ passwd=${{password}},db=${{dbName}}",
 </pre>
 curl request sample 
 
-curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json"  -X PUT -d '{"connectorMetaId":"2","connectorName":"MYSQL Connector meta ","validationRegEx":"","configTemplate":"import MySQLdb \n${{connectionVariable}} = MySQLdb.connect(host=${{host}},user=${{userName}}, passwd=${{password}},db=${{dbName}}","config":"{\"userName\":\"<value>\",\"password\":\"<value>\",\"host\":\"<value>\",\"port\":\"<value>\",\"dbName\":\"<value>\",\"connectionVariable\":\"<value>\"}"}' http://system:port/grapho/connector/meta
+curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json"  -X PUT -d '{"connectorMetaId":"2","connectorName":"MYSQL Connector meta ","validationRegEx":"","configTemplate":"import MySQLdb \n${{connectionVariable}} = MySQLdb.connect(host=${{host}},user=${{userName}}, passwd=${{password}},db=${{dbName}}","config":"{\"userName\":\"<value>\",\"password\":\"<value>\",\"host\":\"<value>\",\"port\":\"<value>\",\"dbName\":\"<value>\",\"connectionVariable\":\"<value>\"}",,"scriptType":"Python"}' http://system:port/grapho/connector/meta
 	
 #### 4. Delete Connector Meta
 <pre>
@@ -124,7 +127,6 @@ Request Data :
 {
 "instanceName"	   :"MYSQL connector",
 "connectorRefId"   :"1",
-"scriptType"       :"Python",
 "instanceConfig"   :
 	"{"userName":"USER",
 	 "password":"PWD",
@@ -138,7 +140,7 @@ Request Data :
 
 Curl Request sample : 
 
-curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X POST -d '{"instanceName":"MYSQL Connector","connectorRefId":"1","instanceConfig":"{\"userName\":\"USER\",\"password\":\"JAVA@123\",\"host\":\"localhost\",\"port\":\"3039\",\"dbName\":\"TEST_DB\",\"connectionVariable\":\"conn\"}","scriptType":"Python"}' http://192.168.127.82:8080/grapho/connector
+curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X POST -d '{"instanceName":"MYSQL Connector","connectorRefId":"1","instanceConfig":"{\"userName\":\"USER\",\"password\":\"JAVA@123\",\"host\":\"localhost\",\"port\":\"3039\",\"dbName\":\"TEST_DB\",\"connectionVariable\":\"conn\"}"}' http://192.168.127.82:8080/grapho/connector
 
 #### 2. Read Connector Instance
 <pre>
@@ -150,7 +152,6 @@ Response Data:
 "instanceId"	   :"100"	
 "instanceName"	   :"MYSQL connector",
 "connectorRefId"   :"1",
-"scriptType"       :"Python",
 "instanceConfig"   :
 	"{"userName":"USER",
 	 "password":"PWD",
@@ -174,7 +175,6 @@ Request Data :
 "instanceId"	   :"100"	
 "instanceName"	   :"MYSQL connector",
 "connectorRefId"   :"1",
-"scriptType"       :"Python",
 "instanceConfig"   :
 	"{"userName":"USER",
 	 "password":"PWD",
@@ -187,7 +187,7 @@ Request Data :
 </pre>
 curl request sample 
 
-curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X PUT -d '{"instanceName":"MYSQL Connector","connectorRefId":"1","instanceConfig":"{\"userName\":\"USER\",\"password\":\"JAVA@123\",\"host\":\"localhost\",\"port\":\"3039\",\"dbName\":\"TEST_DB\",\"connectionVariable\":\"conn\"}","scriptType":"Python"}' http://192.168.127.82:8080/grapho/connector
+curl  -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -X PUT -d '{"instanceName":"MYSQL Connector","connectorRefId":"1","instanceConfig":"{\"userName\":\"USER\",\"password\":\"JAVA@123\",\"host\":\"localhost\",\"port\":\"3039\",\"dbName\":\"TEST_DB\",\"connectionVariable\":\"conn\"}"}' http://192.168.127.82:8080/grapho/connector
 	
 #### 4. Delete Connector Instance
 <pre>
